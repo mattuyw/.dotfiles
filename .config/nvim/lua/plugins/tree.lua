@@ -14,6 +14,7 @@ return function(use)
         requires = {
             "kyazdani42/nvim-web-devicons",
         },
+        tag = 'nightly', -- optional, updated every week. (see issue #1193)
         cmd = {
             "NvimTreeToggle",
         },
@@ -63,7 +64,7 @@ return function(use)
                     height = 30,
                     hide_root_folder = false,
                     side = "left",
-                    auto_resize = false,
+                    --auto_resize = false,
                     mappings = { custom_only = false, list = {} },
                     number = false,
                     relativenumber = false,

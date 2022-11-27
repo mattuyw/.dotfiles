@@ -4,11 +4,12 @@ local opts = {
 }
 
 vim.api.nvim_set_keymap("n", "<leader>ff", ":FzfLua builtin<CR>", opts)
+vim.api.nvim_set_keymap("n", "<leader>f", ":FzfLua live_grep<CR>", opts)
 
 vim.api.nvim_set_keymap("n", "<c-P>", ":FzfLua git_files<CR>", opts)
 vim.api.nvim_set_keymap("n", "<c-B>", ":FzfLua buffers<CR>", opts)
-vim.api.nvim_set_keymap("n", "<c-t>", ":FzfLua btags<CR>", opts)
-vim.api.nvim_set_keymap("n", "<a-t>", ":FzfLua tags<CR>", opts)
+vim.api.nvim_set_keymap("n", "<a-t>", ":FzfLua btags<CR>", opts)
+vim.api.nvim_set_keymap("n", "<c-t>", ":FzfLua tags<CR>", opts)
 
 vim.api.nvim_set_keymap("n", "z=", ":FzfLua spell_suggest<CR>", opts)
 

@@ -22,9 +22,9 @@ pipx-inject/%: $(HOME)/.local/pipx/venvs/%.inject
 
 else
 pipx/%:
-	@eecho there is no pyenv versions for pipx to use. skipping
+	@echo there is no pyenv versions for pipx to use. skipping
 pipx-inject/%:
-	@eecho there is no pyenv versions for pipx to use. skipping
+	@echo there is no pyenv versions for pipx to use. skipping
 endif
 
 .SECONDEXPANSION:

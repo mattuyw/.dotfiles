@@ -1,3 +1,6 @@
+set fish_function_path $fish_function_path "/opt/homebrew/lib/python3.9/site-packages/powerline/bindings/fish"
+fish_add_path /opt/homebrew/sbin
+
 set -U fish_color_autosuggestion 969896
 set -U fish_color_cancel \x2dr
 set -U fish_color_command b294bb
@@ -26,7 +29,6 @@ set -U fish_pager_color_prefix white\x1e\x2d\x2dbold\x1e\x2d\x2dunderline
 set -U fish_pager_color_progress brwhite\x1e\x2d\x2dbackground\x3dcyan
 set -U fish_greeting Welcome\x20to\x20fish\x2c\x20the\x20friendly\x20interactive\x20shell
 
-set -gx ANDROID_HOME /usr/local/opt/android-sdk
 set -gx GOPATH $HOME/.go
 set -gx RIPGREP_CONFIG_PATH $HOME/.config/ripgrep/.ripgreprc
 set -gx PTPYTHON_CONFIG_HOME $HOME/.config/ptpython
@@ -34,23 +36,24 @@ set -gx LANG en_US.UTF-8
 set -gx EDITOR vim
 set -gx N_PREFIX $HOME/.n
 
-if not contains $HOME/.fish-path-hook $PATH
-    and status --is-interactive
-    or status --is-login
-
-    if ! test -e $HOME/.path
-        $HOME/.bin/generate_path.sh >$HOME/.path
-    end
-
-    set -gx PATH (cat $HOME/.path) $HOME/.fish-path-hook
-
-    # sometimes within subshell when VIRTUAL_ENV is already set
-    # above PATH adjustements will put VIRTUAL_ENV not on top of PATH
-    # hence ignoring most of PATH order
-    if set -q VIRTUAL_ENV
-        set -gx PATH $VIRTUAL_ENV/bin $PATH
-    end
-end
+# NOTE: this broke default fish path mods
+#if not contains $HOME/.fish-path-hook $PATH
+#    and status --is-interactive
+#    or status --is-login
+#
+#    if ! test -e $HOME/.path
+#        $HOME/.bin/generate_path.sh >$HOME/.path
+#    end
+#
+#    set -gx PATH (cat $HOME/.path) $HOME/.fish-path-hook
+#
+# sometimes within subshell when VIRTUAL_ENV is already set
+# above PATH adjustements will put VIRTUAL_ENV not on top of PATH
+# hence ignoring most of PATH order
+#    if set -q VIRTUAL_ENV
+#        set -gx PATH $VIRTUAL_ENV/bin $PATH
+#    end
+#end
 
 if ! test -e $HOME/.man_path
     $HOME/.bin/generate_manpath.sh >$HOME/.man_path
@@ -61,9 +64,9 @@ if which starship >/dev/null 2>&1
     starship init fish | source
 end
 
-if which zoxide >/dev/null 2>&1
-    zoxide init fish | source
-end
+#if which zoxide >/dev/null 2>&1
+#    zoxide init fish | source
+#end
 
 alias l="ls -la"
 alias fish_config.fish="vim ~/.config/fish/config.fish"
@@ -112,10 +115,6 @@ if test -f /usr/local/share/chtf/chtf.fish
     source /usr/local/share/chtf/chtf.fish
 end
 
-if test -d $HOME/.ssh
-    cat $HOME/.ssh/*.config >$HOME/.ssh/.config
-end
-
 if which src-hilite-lesspipe.sh >/dev/null 2>&1
     set -gx LESSOPEN "| src-hilite-lesspipe.sh %s"
     set -gx LESS " -R "
@@ -134,6 +133,10 @@ if which fortune >/dev/null 2>&1
     fortune -s | cowsay
 end
 
+export SSH_AUTH_SOCK=$(gpgconf --list-dirs agent-ssh-socket)
+gpgconf --launch gpg-agent
+gpg-connect-agent updatestartuptty /bye
+
 set -gx GNUPGHOME $HOME/.gnupg
 if not set -q SSH_CONNECTION
     and which gpgconf >/dev/null 2>&1
@@ -143,20 +146,27 @@ if not set -q SSH_CONNECTION
     set -gx SSH_AUTH_SOCK (gpgconf --list-dirs agent-ssh-socket)
     set -gx SSH_AGENT_PID ""
 
-    if which gpg-connect-agent >/dev/null 2>&1
-        gpg-connect-agent updatestartuptty /bye >/dev/null 2>&1 &
-    end
+    #if which gpg-connect-agent >/dev/null 2>&1
+    #    gpg-connect-agent updatestartuptty /bye >/dev/null 2>&1 &
+    #end
 
     # modify macOS system SSH_AUTH_SOCK if it does not match
     # only for non-root user
-    if which launchctl >/dev/null 2>&1
-        and test (id -u) -gt 0
-        and test (
-                launchctl asuser (id -u) launchctl getenv SSH_AUTH_SOCK 2> /dev/null;
-                or echo $SSH_AUTH_SOCK
-            ) != $SSH_AUTH_SOCK
-        launchctl asuser (id -u) launchctl setenv SSH_AUTH_SOCK (echo $SSH_AUTH_SOCK) &
-    end
+    #if which launchctl >/dev/null 2>&1
+    #    and test (id -u) -gt 0
+    #    and test (
+    #            launchctl asuser (id -u) launchctl getenv SSH_AUTH_SOCK 2> /dev/null;
+    #            or echo $SSH_AUTH_SOCK
+    #        ) != $SSH_AUTH_SOCK
+    #    launchctl asuser (id -u) launchctl setenv SSH_AUTH_SOCK (echo $SSH_AUTH_SOCK) &
+    #end
 end
 
+# NOTE: had to follow this https://chuyeow.wtf/2013/10/27/installing-powerline-on-os-x-homebrew
 fish_vi_key_bindings
+#powerline-setup
+fish_add_path $HOME/.local/bin
+fish_add_path /usr/local/bin
+fish_add_path /opt/homebrew/opt/grep/libexec/gnubin
+
+thefuck --alias | source

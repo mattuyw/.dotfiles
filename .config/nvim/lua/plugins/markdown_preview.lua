@@ -1,4 +1,4 @@
-vim.g.mkdp_open_to_the_world = 1
+vim.g.mkdp_open_to_the_world = 0
 vim.g.mkdp_echo_preview_url = 1
 
 return function(use)
@@ -15,6 +15,7 @@ return function(use)
 			command! -buffer MarkdownPreview call mkdp#util#open_preview_page()
 			command! -buffer MarkdownPreviewStop call mkdp#util#stop_preview()
 			command! -buffer MarkdownPreviewToggle call mkdp#util#toggle_preview()
+			nmap <C-s> <Plug>MarkdownPreviewToggle
 			]])
         end,
     })

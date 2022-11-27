@@ -9,11 +9,11 @@ shell:
 
 window:
   dimensions:
-   columns: 0
-   lines: 0
+    columns: 0
+    lines: 0
   padding:
-   x: 5
-   y: 5
+    x: 5
+    y: 5
   decorations: full
 
 scrolling:
@@ -53,84 +53,83 @@ draw_bold_text_with_bright_colors: false
 
 colors:
   primary:
-    background: '0x26282a'
-    foreground: '0xf0f0f0'
+    background: "0x26282a"
+    foreground: "0xf0f0f0"
   cursor:
-    text: '0x272822'
-    cursor: '0xf8f8f0'
+    text: "0x272822"
+    cursor: "0xf8f8f0"
   vi_mode_cursor:
-    text: '0x272822'
-    cursor: '0xf8f8f0'
+    text: "0x272822"
+    cursor: "0xf8f8f0"
   normal:
-    black:   '0x26282a'
-    red:     '0xff8878'
-    green:   '0xb4fb73'
-    yellow:  '0xfffcb7'
-    blue:    '0x8bbce5'
-    magenta: '0xffb2fe'
-    cyan:    '0xa2e1f8'
-    white:   '0xf1f1f1'
+    black: "0x26282a"
+    red: "0xff8878"
+    green: "0xb4fb73"
+    yellow: "0xfffcb7"
+    blue: "0x8bbce5"
+    magenta: "0xffb2fe"
+    cyan: "0xa2e1f8"
+    white: "0xf1f1f1"
   bright:
-    black:   '0x6f6f6f'
-    red:     '0xfe978b'
-    green:   '0xd6fcba'
-    yellow:  '0xfffed5'
-    blue:    '0xc2e3ff'
-    magenta: '0xffc6ff'
-    cyan:    '0xc0e9f8'
-    white:   '0xffffff'
+    black: "0x6f6f6f"
+    red: "0xfe978b"
+    green: "0xd6fcba"
+    yellow: "0xfffed5"
+    blue: "0xc2e3ff"
+    magenta: "0xffc6ff"
+    cyan: "0xc0e9f8"
+    white: "0xffffff"
   search:
     matches:
-      foreground: '#000000'
-      background: '#FFD73F'
-    bar:
-      background: '#c5c8c6'
-      foreground: '#1d1f21'
+      foreground: "#000000"
+      background: "#FFD73F"
+    colors.footer_bar:
+      background: "#c5c8c6"
+      foreground: "#1d1f21"
   selection:
-    text: '#263137'
-    background: '#FFD73F'
-
+    text: "#263137"
+    background: "#FFD73F"
 
 # Bell
 #
 # The bell is rung every time the BEL control character is received.
 #bell:
-  # Visual Bell Animation
-  #
-  # Animation effect for flashing the screen when the visual bell is rung.
-  #
-  # Values for `animation`:
-  #   - Ease
-  #   - EaseOut
-  #   - EaseOutSine
-  #   - EaseOutQuad
-  #   - EaseOutCubic
-  #   - EaseOutQuart
-  #   - EaseOutQuint
-  #   - EaseOutExpo
-  #   - EaseOutCirc
-  #   - Linear
-  #animation: EaseOutExpo
+# Visual Bell Animation
+#
+# Animation effect for flashing the screen when the visual bell is rung.
+#
+# Values for `animation`:
+#   - Ease
+#   - EaseOut
+#   - EaseOutSine
+#   - EaseOutQuad
+#   - EaseOutCubic
+#   - EaseOutQuart
+#   - EaseOutQuint
+#   - EaseOutExpo
+#   - EaseOutCirc
+#   - Linear
+#animation: EaseOutExpo
 
-  # Duration of the visual bell flash in milliseconds. A `duration` of `0` will
-  # disable the visual bell animation.
-  #duration: 0
+# Duration of the visual bell flash in milliseconds. A `duration` of `0` will
+# disable the visual bell animation.
+#duration: 0
 
-  # Visual bell animation color.
-  #color: '#ffffff'
+# Visual bell animation color.
+#color: '#ffffff'
 
-  # Bell Command
-  #
-  # This program is executed whenever the bell is rung.
-  #
-  # When set to `command: None`, no command will be executed.
-  #
-  # Example:
-  #   command:
-  #     program: notify-send
-  #     args: ["Hello, World!"]
-  #
-  #command: None
+# Bell Command
+#
+# This program is executed whenever the bell is rung.
+#
+# When set to `command: None`, no command will be executed.
+#
+# Example:
+#   command:
+#     program: notify-send
+#     args: ["Hello, World!"]
+#
+#command: None
 
 # Background opacity
 #
@@ -139,36 +138,36 @@ colors:
 #background_opacity: 1.0
 
 #selection:
-  # This string contains all characters that are used as separators for "semantic words" in Alacritty.
-  #semantic_escape_chars: ",│`|:\"' ()[]{}<>\t"
+# This string contains all characters that are used as separators for "semantic words" in Alacritty.
+#semantic_escape_chars: ",│`|:\"' ()[]{}<>\t"
 
-  # When set to `true`, selected text will be copied to the primary clipboard.
-  #save_to_clipboard: false
+# When set to `true`, selected text will be copied to the primary clipboard.
+#save_to_clipboard: false
 
 #cursor:
-  # Cursor style
-  #
-  # Values for `style`:
-  #   - ▇ Block
-  #   - _ Underline
-  #   - | Beam
-  #style: Block
+# Cursor style
+#
+# Values for `style`:
+#   - ▇ Block
+#   - _ Underline
+#   - | Beam
+#style: Block
 
-  # Vi mode cursor style
-  #
-  # If the vi mode cursor style is `None` or not specified, it will fall back to
-  # the style of the active value of the normal cursor.
-  #
-  # See `cursor.style` for available options.
-  #vi_mode_style: None
+# Vi mode cursor style
+#
+# If the vi mode cursor style is `None` or not specified, it will fall back to
+# the style of the active value of the normal cursor.
+#
+# See `cursor.style` for available options.
+#vi_mode_style: None
 
-  # If this is `true`, the cursor will be rendered as a hollow box when the
-  # window is not focused.
-  #unfocused_hollow: true
+# If this is `true`, the cursor will be rendered as a hollow box when the
+# window is not focused.
+#unfocused_hollow: true
 
-  # Thickness of the cursor relative to the cell width as floating point number
-  # from `0.0` to `1.0`.
-  #thickness: 0.15
+# Thickness of the cursor relative to the cell width as floating point number
+# from `0.0` to `1.0`.
+#thickness: 0.15
 
 # Live config reload (changes require restart)
 #live_config_reload: true
@@ -478,4 +477,4 @@ key_bindings:
   #- { key: F,              mods: Command|Control,    action: ToggleFullscreen }
   #- { key: F,              mods: Command,            action: SearchForward    }
   #- { key: B,              mods: Command,            action: SearchBackward   }
-  - { key: Return,          mods: Command,            action: ToggleFullscreen }
+  - { key: Return, mods: Command, action: ToggleFullscreen }

@@ -1,6 +1,6 @@
 [user]
-    name = Miroslav Shubernetskiy
-    email = miroslav@miki725.com
+    name = Matthew Nichols
+    email = matthew.nichols@gc.com
 [include]
     path = .gitconfig.user
     path = .gitconfig.diff
@@ -33,3 +33,4 @@
     rebase = false
 [init]
     templateDir = ~/.git-template
+	defaultBranch = main

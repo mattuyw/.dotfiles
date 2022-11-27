@@ -32,12 +32,13 @@ return function(use)
     use({
         "neovim/nvim-lspconfig",
         requires = {
+            "nvim-lua/plenary.nvim",
             "jose-elias-alvarez/null-ls.nvim",
             "folke/trouble.nvim",
             "folke/lsp-colors.nvim",
             "weilbith/nvim-code-action-menu",
             "ray-x/lsp_signature.nvim",
-            "folke/lua-dev.nvim",
+            "folke/neodev.nvim",
         },
         config = function()
             -- shows all violations in a project
@@ -51,7 +52,7 @@ return function(use)
 
             local nvim_lsp = require("lspconfig")
             local null_ls = require("null-ls")
-            local luadev = require("lua-dev")
+            local luadev = require("neodev")
 
             vim.diagnostic.config({
                 virtual_text = false,
@@ -64,20 +65,20 @@ return function(use)
                 severity_sort = true,
             })
 
-            local disable_formatting = function(client)
-                for _, filetype in pairs(client.config.filetypes) do
-                    -- attempt to find null-ls formatting source for same filetype
-                    -- in which case disable the native lsp client formatting
-                    for _, source in pairs(null_ls.get_sources()) do
-                        if source.methods[null_ls.methods.FORMATTING] and source.filetypes[filetype] then
-                            client.resolved_capabilities.document_formatting = false
-                            client.resolved_capabilities.document_range_formatting = false
-                            return
-                        end
-                    end
-                end
-            end
-
+--            local disable_formatting = function(client)
+--                for _, filetype in pairs(client.config.filetypes) do
+--                    -- attempt to find null-ls formatting source for same filetype
+--                    -- in which case disable the native lsp client formatting
+--                    for _, source in pairs(null_ls.get_sources()) do
+--                        if source.methods[null_ls.methods.FORMATTING] and source.filetypes[filetype] then
+--                            client.resolved_capabilities.document_formatting = false
+--                            client.resolved_capabilities.document_range_formatting = false
+--                            return
+--                        end
+--                    end
+--                end
+--            end
+--
             -- Use an on_attach function to only map the following keys
             -- after the language server attaches to the current buffer
             local on_attach = function(client, bufnr)
@@ -119,7 +120,7 @@ return function(use)
                 vim.o.updatetime = 250
                 vim.cmd("autocmd CursorHold * lua vim.diagnostic.open_float(nil, {focusable=false})")
 
-                if client.resolved_capabilities.document_highlight then
+                if client.server_capabilities.documentHighlightProvider then
                     vim.cmd([[
                     augroup lsp_document_highlight
                         autocmd! * <buffer>
@@ -131,7 +132,7 @@ return function(use)
             end
 
             local lsp_on_attach = function(client, bufnr)
-                disable_formatting(client)
+                --disable_formatting(client)
                 on_attach(client, bufnr)
             end
 
@@ -211,7 +212,7 @@ return function(use)
             null_ls.setup({
                 sources = sources,
                 on_attach = function(client, bufnr)
-                    if client.resolved_capabilities.document_formatting then
+                    if client.server_capabilities.documentFormattingProvider then
                         vim.cmd("autocmd BufWritePre <buffer> lua vim.lsp.buf.formatting_sync()")
                     end
 

@@ -1,5 +1,5 @@
 N_PREFIX=$(HOME)/.n
-PATH:=$(N_PREFIX)/bin:$(PATH)
+PATH:=$N_PREFIX/bin:$(PATH)
 
 upgrade::
 	npm upgrade -g
@@ -13,3 +13,7 @@ $(N_PREFIX)/lib/node_modules/%:
 
 $(N_PREFIX)/bin/node:
 	bash -c 'bash <(curl https://raw.githubusercontent.com/tj/n/master/bin/n) lts'
+
+# NOTE: above prefix does not work. needed to do this in terminal:
+#N_PREFIX=$HOME/.n
+#PATH=$N_PREFIX/bin:$PATH

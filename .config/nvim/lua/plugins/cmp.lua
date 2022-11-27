@@ -4,13 +4,13 @@ return function(use)
     use({
         "hrsh7th/nvim-cmp",
         requires = {
+            "onsails/lspkind-nvim", -- vscode-like pictograms
             "L3MON4D3/LuaSnip",
-            "f3fora/cmp-spell",
-            "hrsh7th/cmp-buffer",
-            "hrsh7th/cmp-cmdline",
             "hrsh7th/cmp-nvim-lsp",
+            "hrsh7th/cmp-buffer",
+            "f3fora/cmp-spell",
+            "hrsh7th/cmp-cmdline",
             "hrsh7th/cmp-path",
-            "onsails/lspkind-nvim",
             -- "quangnguyen30192/cmp-nvim-tags", -- pretty slow
             "ray-x/cmp-treesitter",
         },
@@ -23,29 +23,29 @@ return function(use)
 
             cmp.setup({
 
-                completion = { autocomplete = false },
+				-- completion = { autocomplete = true },
 
-                view = {
-                    entries = "custom", -- can be "custom", "wildmenu" or "native"
-                },
+                --view = {
+                --    entries = "custom", -- can be "custom", "wildmenu" or "native"
+                --},
 
-                formatting = {
-                    format = lspkind.cmp_format({
-                        with_text = true, -- do not show text alongside icons
-                        maxwidth = 50, -- prevent the popup from showing more than provided characters (e.g 50 will not show more than 50 characters)
-                        menu = {
-                            buffer = "(Buffer)",
-                            calc = "(Calc)",
-                            emoji = "(Emoji)",
-                            gh_issues = "(Issues)",
-                            luasnip = "(Snippet)",
-                            nvim_lsp = "(LSP)",
-                            path = "(Path)",
-                            treesitter = "(TS)",
-                            spell = "(Spell)",
-                        },
-                    }),
-                },
+                --formatting = {
+                --    format = lspkind.cmp_format({
+                --        with_text = true, -- do not show text alongside icons
+                --        maxwidth = 50, -- prevent the popup from showing more than provided characters (e.g 50 will not show more than 50 characters)
+                --        menu = {
+                --            buffer = "(Buffer)",
+                --            calc = "(Calc)",
+                --            emoji = "(Emoji)",
+                --            gh_issues = "(Issues)",
+                --            luasnip = "(Snippet)",
+                --            nvim_lsp = "(LSP)",
+                --            path = "(Path)",
+                --            treesitter = "(TS)",
+                --            spell = "(Spell)",
+                --        },
+                --    }),
+                --},
 
                 snippet = {
                     expand = function(args)
@@ -105,43 +105,48 @@ return function(use)
                 }),
             })
 
-            cmp.setup.cmdline("/", {
-                completion = { autocomplete = false },
-                mapping = cmp.mapping.preset.cmdline({
-                    ["<C-Space>"] = {
-                        c = cmp.mapping.complete(),
-                    },
-                }),
-                sources = { --
-                    { name = "buffer" },
-                },
-            })
+			vim.cmd [[
+			  set completeopt=menuone,noinsert,noselect
+			  highlight! default link CmpItemKind CmpItemMenuDefault
+			]]
 
-            cmp.setup.cmdline(":", {
-                completion = { autocomplete = false },
-                mapping = cmp.mapping.preset.cmdline({
-                    ["<C-Space>"] = {
-                        c = cmp.mapping.complete(),
-                    },
-                    ["<Tab>"] = {
-                        c = function(fallback)
-                            if cmp.visible() then
-                                cmp.select_next_item()
-                            else
-                                if cmp.complete() then
-                                    cmp.select_next_item()
-                                else
-                                    fallback()
-                                end
-                            end
-                        end,
-                    },
-                }),
-                sources = cmp.config.sources({
-                    { name = "path" },
-                    { name = "cmdline" },
-                }),
-            })
+            --cmp.setup.cmdline("/", {
+            --    completion = { autocomplete = false },
+            --    mapping = cmp.mapping.preset.cmdline({
+            --        ["<C-Space>"] = {
+            --            c = cmp.mapping.complete(),
+            --        },
+            --    }),
+            --    sources = { --
+            --        { name = "buffer" },
+            --    },
+            --})
+
+            --cmp.setup.cmdline(":", {
+            --    completion = { autocomplete = false },
+            --    mapping = cmp.mapping.preset.cmdline({
+            --        ["<C-Space>"] = {
+            --            c = cmp.mapping.complete(),
+            --        },
+            --        ["<Tab>"] = {
+            --            c = function(fallback)
+            --                if cmp.visible() then
+            --                    cmp.select_next_item()
+            --                else
+            --                    if cmp.complete() then
+            --                        cmp.select_next_item()
+            --                    else
+            --                        fallback()
+            --                    end
+            --                end
+            --            end,
+            --        },
+            --    }),
+            --    sources = cmp.config.sources({
+            --        { name = "path" },
+            --        { name = "cmdline" },
+            --    }),
+            --})
 
             -- Setup lspconfig.
             -- local capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protocol.make_client_capabilities())

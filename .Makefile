@@ -6,7 +6,7 @@ containing = $(foreach v,$2,$(if $(findstring $1,$v),$v))
 not-containing = $(foreach v,$2,$(if $(findstring $1,$v),,$v))
 
 help:  ## show help
-	@grep -E '^[a-zA-Z_\/%\-]+:.*?## .*$$' $(MAKEFILE_LIST) | \
+	grep -E '^[a-zA-Z_\/%\-]+:.*?## .*$$' $(MAKEFILE_LIST) | \
 		cut -d':' -f2- | \
 		awk 'BEGIN {FS = ":.*?## "}; {printf "\033[36m%-15s\033[0m %s\n", $$1, $$2}' | \
 		sort -t % -k 2.1,2.1
@@ -38,8 +38,8 @@ all: gpg
 
 ifeq "$(OS)" "Darwin"
 mac:  ## adjust various mac settings
-mac: browserpass
 mac: mac-keyboard
+#mac: browserpass
 else
 mac:
 endif
@@ -47,15 +47,15 @@ endif
 mac-keyboard:
 	defaults write -g KeyRepeat -int 1
 
-ifeq "$(OS)" "Darwin"
-browserpass: brew/browserpass
-	cat /usr/local/opt/browserpass/lib/browserpass/Makefile \
-		| sed 's/Chrome/Chrome Beta/g' \
-		| PREFIX='/usr/local/opt/browserpass' \
-			make -f - hosts-firefox-user hosts-chrome-user
-else
-browserpass:
-endif
+# ifeq "$(OS)" "Darwin"
+# browserpass: brew/browserpass
+# 	cat /usr/local/opt/browserpass/lib/browserpass/Makefile \
+# 		| sed 's/Chrome/Chrome Beta/g' \
+# 		| PREFIX='/usr/local/opt/browserpass' \
+# 			make -f - hosts-firefox-user hosts-chrome-user
+# else
+# browserpass:
+# endif
 
 git:  ## adjust git cofig - conditionally enable gpg signing
 git: .gitconfig.user
@@ -116,6 +116,6 @@ ssh: .ssh/authorized_keys
 	mkdir $@
 	chmod 0700 $@
 
-.ssh/authorized_keys: .ssh
-	gpg --export-ssh-key miroslav@miki725.com > $@
-	chmod 0600 $@
+#.ssh/authorized_keys: .ssh
+#	gpg --export-ssh-key miroslav@miki725.com > $@
+#	chmod 0600 $@

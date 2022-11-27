@@ -2,14 +2,14 @@ let g:neovide_cursor_animation_length=0
 set guifont=Hack\ Nerd\ Font
 
 let g:do_filetype_lua = 1
-let g:did_load_filetypes = 0
+" let g:did_load_filetypes = 0
 
 scriptencoding utf-8
 set encoding=utf-8
 
 syntax enable
-set termguicolors
 " colorscheme monokai
+" set termguicolors
 set mouse=a
 
 set splitright
@@ -28,8 +28,8 @@ set number
 " highlight current line
 set cursorline
 " show right margin at 120 chars
-set colorcolumn=120
-autocmd FileType markdown setlocal colorcolumn=80
+" set colorcolumn=120
+" autocmd FileType markdown setlocal colorcolumn=80
 
 " show hidden chars
 set list
@@ -72,13 +72,13 @@ endif
 " https://stackoverflow.com/questions/916875/yank-file-name-path-of-current-buffer-in-vim
 " copy current file name (relative/absolute) to system clipboard
 if has("mac") || has("gui_macvim") || has("gui_mac")
-  " relative path  (src/foo.txt)
+  " relative path  (src/bar.txt)
   nnoremap <leader>cf :let @*=expand("%") \| OSCYankReg *<CR>
 
-  " absolute path  (/something/src/foo.txt
+  " absolute path  (/something/src/bar.txt
   nnoremap <leader>cF :let @*=expand("%:p") \| OSCYankReg *<CR>
 
-  " filename       (foo.txt)
+  " filename       (bar.txt)
   nnoremap <leader>ct :let @*=expand("%:t") \| OSCYankReg *<CR>
 
   " directory name (/something/src)
@@ -87,13 +87,13 @@ endif
 
 " copy current file name (relative/absolute) to system clipboard (Linux version)
 if has("gui_gtk") || has("gui_gtk2") || has("gui_gnome") || has("unix")
-  " relative path (src/foo.txt)
+  " relative path (src/bar.txt)
   nnoremap <leader>cf :let @+=expand("%") \| OSCYankReg +<CR>
 
-  " absolute path (/something/src/foo.txt)
+  " absolute path (/something/src/bar.txt)
   nnoremap <leader>cF :let @+=expand("%:p") \| OSCYankReg +<CR>
 
-  " filename (foo.txt)
+  " filename (bar.txt)
   nnoremap <leader>ct :let @+=expand("%:t") \| OSCYankReg +<CR>
 
   " directory name (/something/src)
@@ -122,3 +122,5 @@ function! ClearScrollback()
     let timer = timer_start(5, 'ToggleScrollback', {'repeat': 1})
 endfunction
 " }}}
+
+colorscheme vscode
