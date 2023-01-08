@@ -1,4 +1,4 @@
-vim.g.rg_command = "rg --vimgrep -S"
+vim.g.rg_command = "rg --vimgrep --hidden -S"
 vim.g.rg_highlight = 1
 vim.g.rg_apply_mappings = 1
 
@@ -7,7 +7,7 @@ vim.g.rg_apply_mappings = 1
 --    silent = true,
 --}
 
--- vim.api.nvim_set_keymap("n", "<leader>f", ":Rg<CR>", opts)
+vim.api.nvim_set_keymap("n", "<leader>f", ":Rg<CR>", opts)
 
 return function(use)
     use({

@@ -4,7 +4,7 @@
 minimal: brew/btop pacman/btop  # c version of bpytop
 minimal: cask/firefox
 minimal: cask/obsidian
-minimal: brew/fish pacman/fish
+#minimal: brew/fish pacman/fish
 minimal: cask/font-hack-nerd-font
 minimal: brew/fzf pacman/fzf
 minimal: brew/git pacman/git
@@ -16,6 +16,7 @@ minimal: brew/tldr pacman/tldr
 minimal: cask/amethyst
 minimal: cask/alacritty
 minimal: cask/microsoft-edge
+minimal: brew/zap
 
 entertainment: cask/spotify
 entertainment: cask/signal
@@ -33,6 +34,7 @@ installers: brew/pyenv pacman/pyenv
 # NOTE: I also did a python3 -m pip install ansible-vault
 # tools: pacman/arch-install-scripts  # genfstab
 tools: brew/bash # eden
+tools: brew/bat
 #tools: brew/ansible
 #tools: brew/ccat
 tools: brew/colordiff
@@ -54,7 +56,7 @@ tools: brew/gnu-which # eden
 #tools: npm/@jarred/git-view # preview any github repo in vim
 tools: brew/jq
 #tools: brew/lolcat  # colorful cats
-#tools: brew/lsd pacman/lsd
+tools: brew/lsd
 #tools: pacman/lsof
 #tools: brew/make
 tools: brew/moreutils # eden
@@ -184,7 +186,7 @@ devpy: pipx/pipenv
 devpy: pipx/poetry
 devpy: pipx/ptpython
 devpy: pipx/twine
-devpy: pipx/virtualfish
+#devpy: pipx/virtualfish
 
 devnode: npm/eslint
 devnode: npm/eslint_d
@@ -233,7 +235,7 @@ pipx/pandoc-fignos: VERSION=<2.3.1
 #pipx/powerline-status: pipx-inject/powerline-status/powerline-mem-segment
 #pipx/powerline-status: pipx-inject/powerline-status/psutil
 brew/tmux: brew/reattach-to-user-namespace
-pipx/virtualfish: OPTIONS=--include-deps
+#pipx/virtualfish: OPTIONS=--include-deps
 cask/yubico-authenticator: TAP=homebrew/cask-drivers/
 cask/yubico-yubiokey-manager: TAP=homebrew/cask-drivers/
 
@@ -257,6 +259,8 @@ $(BREW_PREFIX)/Cellar/pandoc-citeproc:
 	curl -L https://bintray.com/homebrew/bottles/download_file?file_path=pandoc-citeproc-0.17.0.1.catalina.bottle.tar.gz \
 		| tar -zxv -C /usr/local/Cellar
 
+brew/zap:
+	curl -s https://raw.githubusercontent.com/zap-zsh/zap/master/install.sh | $(SHELL)
 # brew/sshuttle  # proxy over ssh
 # brew/cipherscan  # scan all cipher suites for https
 # brew/dnsperf  # profile dns server

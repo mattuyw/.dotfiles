@@ -1,7 +1,0 @@
-unmap a
-let searchalias g = "google"
-let searchalias d = "duckduckgo"
-site '*://github.com/*' {
-      unmap t
-}
-let blacklists = ["https://dca.immersivelabs.online/*"]

@@ -8,6 +8,7 @@ end
 
 vim.g.gutentags_define_advanced_commands = true
 vim.g.gutentags_file_list_command = "fd --strip-cwd-prefix"
+-- vim.g.gutentags_trace = true
 
 return function(use)
     use({

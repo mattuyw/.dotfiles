@@ -3,9 +3,9 @@ shell:
   args:
     - .bin/exec_first_found.sh
     - tmux
+    - zsh --login
     - fish --login
     - bash --login
-    - zsh --login
 
 window:
   dimensions:
