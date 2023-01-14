@@ -16,6 +16,7 @@ export PATH="/usr/local/bin:$PATH"
 export PATH="/opt/homebrew/bin:$PATH"
 export PATH="/opt/homebrew/sbin:$PATH"
 export RIPGREP_CONFIG_PATH="$HOME/.config/ripgrep/.ripgreprc"
+export TMUX_PLUGIN_MANAGER_PATH="$HOME/.tmux/plugins/"
 
 export SSH_AUTH_SOCK=$(gpgconf --list-dirs agent-ssh-socket)
 gpgconf --launch gpg-agent

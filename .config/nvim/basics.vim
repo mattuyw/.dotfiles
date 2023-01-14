@@ -2,14 +2,11 @@ let g:neovide_cursor_animation_length=0
 set guifont=Hack\ Nerd\ Font
 
 let g:do_filetype_lua = 1
-" let g:did_load_filetypes = 0
 
 scriptencoding utf-8
 set encoding=utf-8
 
 syntax enable
-" colorscheme monokai
-" set termguicolors
 set mouse=a
 
 set splitright
@@ -24,11 +21,11 @@ set clipboard=unnamed
 set clipboard+=unnamedplus
 
 " show line numbers
-set number
+set number relativenumber
 " highlight current line
 set cursorline
 " show right margin at 120 chars
-" set colorcolumn=120
+set colorcolumn=120
 " autocmd FileType markdown setlocal colorcolumn=80
 
 " show hidden chars
@@ -45,9 +42,6 @@ autocmd FileType markdown set spell
 " allow to cycle from hidden buffers - with unsaved changes
 " http://vimcasts.org/episodes/working-with-buffers/
 set hidden
-
-" open fish by default
-" set shell=fish
 
 " enable file type detection
 filetype on

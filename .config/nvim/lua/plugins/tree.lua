@@ -10,11 +10,11 @@ vim.api.nvim_set_keymap("n", "<leader>t", ":NvimTreeToggle<CR>", opts)
 
 return function(use)
     use({
-        "kyazdani42/nvim-tree.lua",
+        "nvim-tree/nvim-tree.lua",
         requires = {
-            "kyazdani42/nvim-web-devicons",
+            "nvim-tree/nvim-web-devicons",
         },
-        tag = 'nightly', -- optional, updated every week. (see issue #1193)
+        --tag = 'nightly', -- optional, updated every week. (see issue #1193)
         cmd = {
             "NvimTreeToggle",
         },
@@ -23,15 +23,15 @@ return function(use)
             require("nvim-tree").setup({
                 disable_netrw = true,
                 hijack_netrw = true,
-                open_on_setup = false,
+                --open_on_setup = false,
                 ignore_ft_on_setup = {},
-                open_on_tab = false,
+                --open_on_tab = false,
                 hijack_cursor = false,
                 update_cwd = false,
-                update_to_buf_dir = {
-                    enable = false,
-                    auto_open = true,
-                },
+                --update_to_buf_dir = {
+                --    enable = false,
+                --    auto_open = true,
+                --},
                 diagnostics = {
                     enable = false,
                     icons = {
@@ -61,10 +61,10 @@ return function(use)
                 },
                 view = {
                     width = 30,
-                    height = 30,
+					--height = 30,
                     hide_root_folder = false,
                     side = "left",
-                    --auto_resize = false,
+					--auto_resize = false,
                     mappings = { custom_only = false, list = {} },
                     number = false,
                     relativenumber = false,

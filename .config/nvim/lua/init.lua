@@ -22,6 +22,7 @@ return require("packer").startup(function(use)
 
     require("plugins.vscode")(use) -- theme, must run "colorscheme vscode"
 
+require("plugins.codewindow")(use)
     -- require("plugins.feline")(use)
 require("plugins.lualine")(use)
 require("plugins.luatab")(use)
