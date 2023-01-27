@@ -1,6 +1,6 @@
 " http://vimcasts.org/episodes/how-to-fold/
 " set foldmethod=syntax
-nnoremap <Space> za
+" nnoremap <Space> za
 set foldlevel=1
 " so that paragraph jumps do not open folded blocks
 set foldopen-=block

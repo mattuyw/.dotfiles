@@ -1,3 +1,6 @@
+vim.g.loaded_netrwPlugin = 1
+vim.g.loaded_netrw = 1
+
 local fn = vim.fn
 local install_path = fn.stdpath("data") .. "/site/pack/packer/start/packer.nvim"
 if fn.empty(fn.glob(install_path)) > 0 then
@@ -20,9 +23,8 @@ return require("packer").startup(function(use)
         opt = false,
     })
 
-    require("plugins.vscode")(use) -- theme, must run "colorscheme vscode"
+	--require("plugins.codewindow")(use)
 
-require("plugins.codewindow")(use)
     -- require("plugins.feline")(use)
 require("plugins.lualine")(use)
 require("plugins.luatab")(use)
@@ -67,6 +69,7 @@ require("plugins.treesitter")(use)
     -- it conflicts with hop so needs to be initialized last
     -- require("plugins.focus")(use)
 
+    require("plugins.vscode")(use) -- theme, must run "colorscheme vscode"
     -- Automatically set up your configuration after cloning packer.nvim
     -- Put this at the end after all plugins
     if PackerBootstrap then

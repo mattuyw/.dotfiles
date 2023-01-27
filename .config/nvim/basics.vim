@@ -41,7 +41,7 @@ autocmd FileType markdown set spell
 
 " allow to cycle from hidden buffers - with unsaved changes
 " http://vimcasts.org/episodes/working-with-buffers/
-set hidden
+" set hidden
 
 " enable file type detection
 filetype on

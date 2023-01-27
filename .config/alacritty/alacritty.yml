@@ -111,6 +111,33 @@ colors:
     cyan: "#6d96a5"
     white: "#aeb3bb"
 
+#colors:
+#  # Default colors
+#  primary:
+#    background: "0x021644"
+#    foreground: "0xedf2fa"
+#
+#  # Normal colors
+#  normal:
+#    black: "0x5b7180"
+#    red: "0xb22222"
+#    green: "0x05a666"
+#    yellow: "0xf9a826"
+#    blue: "0x02382f"
+#    magenta: "0x3d7dd2"
+#    cyan: "0x006554"
+#    white: "0x5b7180"
+#
+#  # Bright colors
+#  bright:
+#    black: "0x9db2c4"
+#    red: "0xbf4246"
+#    green: "0x2aff93"
+#    yellow: "0xf9d966"
+#    blue: "0x1aa58e"
+#    magenta: "0x9db2c4"
+#    cyan: "0x00d682"
+#    white: "0xcfdce8"
 # Bell
 #
 # The bell is rung every time the BEL control character is received.

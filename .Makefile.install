@@ -58,7 +58,7 @@ tools: brew/jq
 #tools: brew/lolcat  # colorful cats
 tools: brew/lsd
 #tools: pacman/lsof
-#tools: brew/make
+tools: brew/make
 tools: brew/moreutils # eden
 #tools: brew/noti  # notify when command finishes
 #tools: brew/openssh pacman/openssh
@@ -96,6 +96,7 @@ casks: cask/bartender
 casks: cask/slack
 #casks: cask/rectangle
 casks: cask/notion
+casks: cask/1password/tap/1password-cli
 #casks: cask/istat-menus
 #casks: cask/adobe-creative-cloud
 #casks: cask/ferdi  # combines apps into one
@@ -167,6 +168,7 @@ dev: brew/universal-ctags # generates tags from codebase
 #dev: cask/vimr
 #dev: brew/watchman  # lib for watching files
 dev: brew/wireguard-tools
+dev: npm/pyright
 
 devcloud: pipx/aws-mfa
 devcloud: pipx/awscliv2
@@ -174,7 +176,7 @@ devcloud: pipx/awscliv2
 #devcloud: pipx/certbot
 #devcloud: brew/tfenv yay/tfenv  # change terraform version
 
-devpy: npm/pyright
+#devpy: npm/pyright
 devpy: pipx/black
 devpy: pipx/check-manifest
 devpy: pipx/flake8

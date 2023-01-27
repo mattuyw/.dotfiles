@@ -4,15 +4,18 @@ return function(use)
     use({
         "hrsh7th/nvim-cmp",
         requires = {
+			"hrsh7th/cmp-buffer",
+			"hrsh7th/cmp-nvim-lsp", -- neovim's built-in language server client
+            --'hrsh7th/cmp-nvim-lua', -- complete neovim's Lua runtime API such vim.lsp.*
+			'hrsh7th/cmp-path', -- filesystem paths
+            'f3fora/cmp-spell', 
+			'hrsh7th/cmp-emoji',
             "onsails/lspkind-nvim", -- vscode-like pictograms
-            "L3MON4D3/LuaSnip",
-            "hrsh7th/cmp-nvim-lsp",
-            "hrsh7th/cmp-buffer",
-            "f3fora/cmp-spell",
-            "hrsh7th/cmp-cmdline",
-            "hrsh7th/cmp-path",
-            -- "quangnguyen30192/cmp-nvim-tags", -- pretty slow
+            "L3MON4D3/LuaSnip", -- https://sbulav.github.io/vim/neovim-setting-up-luasnip/
+			"saadparwaiz1/cmp_luasnip",
             "ray-x/cmp-treesitter",
+			"hrsh7th/cmp-cmdline",
+			"hrsh7th/cmp-nvim-lsp-document-symbol",
         },
         config = function()
             local cmp = require("cmp")
@@ -29,23 +32,21 @@ return function(use)
                 --    entries = "custom", -- can be "custom", "wildmenu" or "native"
                 --},
 
-                --formatting = {
-                --    format = lspkind.cmp_format({
-                --        with_text = true, -- do not show text alongside icons
-                --        maxwidth = 50, -- prevent the popup from showing more than provided characters (e.g 50 will not show more than 50 characters)
-                --        menu = {
-                --            buffer = "(Buffer)",
-                --            calc = "(Calc)",
-                --            emoji = "(Emoji)",
-                --            gh_issues = "(Issues)",
-                --            luasnip = "(Snippet)",
-                --            nvim_lsp = "(LSP)",
-                --            path = "(Path)",
-                --            treesitter = "(TS)",
-                --            spell = "(Spell)",
-                --        },
-                --    }),
-                --},
+                formatting = {
+                    format = lspkind.cmp_format({
+                        with_text = false, -- do not show text alongside icons
+                        maxwidth = 50, -- prevent the popup from showing more than provided characters (e.g 50 will not show more than 50 characters)
+                        menu = {
+                            buffer = "(Buffer)",
+                            emoji = "(Emoji)",
+                            nvim_lsp = "(LSP)",
+                            path = "(Path)",
+                            treesitter = "(Tree)",
+                            spell = "(Spell)",
+                            luasnip = "(Snippet)",
+                        },
+                    }),
+                },
 
                 snippet = {
                     expand = function(args)
@@ -76,13 +77,14 @@ return function(use)
                 }),
 
                 sources = cmp.config.sources({
+					{ name = 'nvim_lsp' },
                     {
                         name = "path",
                         priority_weight = 110,
                         max_item_count = 5,
                     },
                     {
-                        name = "nvim_lsp",
+                        name = "luasnip",
                         priority_weight = 100,
                         max_item_count = 10,
                     },
@@ -101,6 +103,11 @@ return function(use)
                         priority_weight = 70,
                         max_item_count = 5,
                     },
+                    {
+                        name = "emoji",
+                        priority_weight = 70,
+                        max_item_count = 5,
+                    },
                     -- { name = "tags" }, -- pretty slow
                 }),
             })
@@ -110,6 +117,24 @@ return function(use)
 			  highlight! default link CmpItemKind CmpItemMenuDefault
 			]]
 
+			-- https://alpha2phi.medium.com/vim-neovim-plugins-for-a-better-integrated-experience-6accd4c2a52c
+-- lsp_document_symbols
+cmp.setup.cmdline('/', {
+    sources = cmp.config.sources({
+      { name = 'nvim_lsp_document_symbol' }
+    }, {
+      { name = 'buffer' }
+    })
+})
+-- Use cmdline & path source for ':'.
+cmp.setup.cmdline(':', {
+    --completion = { autocomplete = false },
+    sources = cmp.config.sources({
+        { name = 'path' }
+        }, {
+        { name = 'cmdline' }
+    })
+})
             --cmp.setup.cmdline("/", {
             --    completion = { autocomplete = false },
             --    mapping = cmp.mapping.preset.cmdline({

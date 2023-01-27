@@ -1,6 +1,3 @@
-vim.g.loaded_netrwPlugin = 1
-vim.g.loaded_netrw = 1
-
 local opts = {
     noremap = true,
     silent = true,
@@ -18,20 +15,17 @@ return function(use)
         cmd = {
             "NvimTreeToggle",
         },
-        setup = function() end,
         config = function()
             require("nvim-tree").setup({
-                disable_netrw = true,
-                hijack_netrw = true,
-                --open_on_setup = false,
-                ignore_ft_on_setup = {},
-                --open_on_tab = false,
-                hijack_cursor = false,
-                update_cwd = false,
-                --update_to_buf_dir = {
-                --    enable = false,
-                --    auto_open = true,
-                --},
+				open_on_setup = true,
+				open_on_setup_file = true,
+	  			ignore_buffer_on_setup = true,
+                sync_root_with_cwd = false,
+				tab = {
+					sync = {
+						open = true
+					}
+				},
                 diagnostics = {
                     enable = false,
                     icons = {
@@ -46,14 +40,6 @@ return function(use)
                     update_cwd = true,
                     ignore_list = {},
                 },
-                system_open = {
-                    cmd = nil,
-                    args = {},
-                },
-                filters = {
-                    dotfiles = false,
-                    custom = {},
-                },
                 git = {
                     enable = true,
                     ignore = true,
@@ -61,24 +47,23 @@ return function(use)
                 },
                 view = {
                     width = 30,
-					--height = 30,
-                    hide_root_folder = false,
                     side = "left",
-					--auto_resize = false,
-                    mappings = { custom_only = false, list = {} },
-                    number = false,
-                    relativenumber = false,
-                    signcolumn = "yes",
+        mappings = {
+          list = {
+			{ key = "<C->", action = "split" },
+          }
+        }
                 },
-                trash = {
-                    cmd = "trash",
-                    require_confirm = true,
-                },
+                --trash = {
+                --    cmd = "trash",
+                --    require_confirm = true,
+                --},
                 actions = {
                     open_file = {
                         window_picker = {
                             enable = false,
                         },
+						resize_window = true,
                     },
                 },
             })
