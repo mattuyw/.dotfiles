@@ -9,6 +9,7 @@ base: brew/universal-ctags pacman/ctags # generates tags from codebase
 base: cask/font-hack-nerd-font pacman/ttf-hack-nerd
 base: brew/fzf pacman/fzf
 base: pacman/zsh
+base: brew/lsd pacman/lsd
 #base: # TODO: restore
 #	zsh <(curl -s https://raw.githubusercontent.com/zap-zsh/zap/master/install.zsh) # TODO: don't run as root
 
@@ -28,13 +29,13 @@ entertainment: cask/spotify
 entertainment: cask/signal
 
 #	installers: pyenv/2.7
-installers: pyenv/3.10
+#installers: pyenv/3.10
 installers: brew/go pacman/go  # required for yay
-installers: npm/npm
-installers: npm/n # Node.js version management
-installers: brew/node pacman/nodejs
+#installers: npm/npm
+#installers: npm/n # Node.js version management
+#installers: brew/node pacman/nodejs
 installers: brew/pipx pacman/python-pipx
-installers: brew/pyenv pacman/pyenv
+#installers: brew/pyenv pacman/pyenv
 #	installers: brew/ruby
 
 # NOTE: I also did a python3 -m pip install ansible-vault
@@ -62,7 +63,6 @@ tools: brew/gnu-which # eden
 #tools: npm/@jarred/git-view # preview any github repo in vim
 tools: brew/jq
 #tools: brew/lolcat  # colorful cats
-tools: brew/lsd
 #tools: pacman/lsof
 tools: brew/make
 tools: brew/moreutils # eden

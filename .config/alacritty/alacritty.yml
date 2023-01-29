@@ -4,7 +4,6 @@ shell:
     - .bin/exec_first_found.sh
     - tmux
     - zsh --login
-    - fish --login
     - bash --login
 
 window:
@@ -45,7 +44,7 @@ font:
   bold_italic:
     family: Hack Nerd Font
     style: Bold Italic
-  size: 13.0
+  size: 7.0
   offset:
     x: 0
     y: 0

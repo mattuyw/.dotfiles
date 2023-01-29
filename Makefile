@@ -29,7 +29,7 @@ tidy::  ## tidy things up
 all:  ## install everything
 all: minimal
 all: mac
-all: fish
+#all: fish
 all: tmux
 all: vim
 all: git
