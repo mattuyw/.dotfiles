@@ -12,6 +12,8 @@ base: pacman/zsh
 base: brew/lsd pacman/lsd
 #base: # TODO: restore
 #	zsh <(curl -s https://raw.githubusercontent.com/zap-zsh/zap/master/install.zsh) # TODO: don't run as root
+base:
+	chsh -s /usr/bin/zsh # run as user
 
 #	minimal: pacman/base-devel # sudo, which, sed, etc
 minimal: brew/btop pacman/btop  # c version of bpytop
