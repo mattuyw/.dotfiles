@@ -25,13 +25,14 @@ gpg-bye > /dev/null 2>&1
 
 [ -f "$HOME/.local/share/zap/zap.zsh" ] && source "$HOME/.local/share/zap/zap.zsh"
 
-eval $(thefuck --alias)
+# TODO: check if it exists
+#eval $(thefuck --alias)
 
 plug "zsh-users/zsh-autosuggestions"
 plug "zsh-users/zsh-syntax-highlighting"
 plug "zsh-users/zsh-completions"
 #plug "zsh-users/zsh-history-substring-search"
 
-source $HOME/.config/zsh/colored-man-pages.zsh
+#source $HOME/.config/zsh/colored-man-pages.zsh
 
 which starship > /dev/null 2>&1 && source <(starship init zsh --print-full-init)

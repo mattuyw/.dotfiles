@@ -1,22 +1,28 @@
 # !sort -t / -k2
 
+base: cask/alacritty
+base: pacman/alacritty
+base: brew/neovim pacman/neovim
+base: brew/starship pacman/starship  # shell prompt
+base: brew/tmux pacman/tmux
+base: brew/universal-ctags pacman/ctags # generates tags from codebase
+base: cask/font-hack-nerd-font
+base: brew/fzf pacman/fzf
+base: pacman/zsh
+#base: # TODO: restore
+#	zsh <(curl -s https://raw.githubusercontent.com/zap-zsh/zap/master/install.zsh) # TODO: don't run as root
+
 #	minimal: pacman/base-devel # sudo, which, sed, etc
 minimal: brew/btop pacman/btop  # c version of bpytop
 minimal: cask/firefox
-minimal: cask/obsidian
-#minimal: brew/fish pacman/fish
-minimal: cask/font-hack-nerd-font
-minimal: brew/fzf pacman/fzf
-minimal: brew/git pacman/git
+#minimal: cask/obsidian
+#minimal: brew/git pacman/git
 minimal: brew/grep
 minimal: brew/htop pacman/htop
-minimal: brew/neovim pacman/neovim
 minimal: brew/tldr pacman/tldr
 #minimal: cask/wezterm # gpu terminal emulator
 minimal: cask/amethyst
-minimal: cask/alacritty
-minimal: cask/microsoft-edge
-minimal: brew/zap
+#minimal: cask/microsoft-edge
 
 entertainment: cask/spotify
 entertainment: cask/signal
@@ -67,7 +73,6 @@ tools: brew/openssl@3
 #tools: brew/progress  # track progress of io programs like dd
 tools: brew/ripgrep # pacman/ripgrep
 #tools: brew/source-highlight  # used by less with default highlight
-tools: brew/starship #pacman/starship  # shell prompt
 tools: brew/tree # eden
 tools: brew/unzip # eden
 tools: brew/watch # eden
@@ -154,17 +159,14 @@ dev: cask/docker
 #dev: brew/git-delta pacman/git-delta  pacman/gclibc  # git diff syntax highlighting
 #dev: pacman/gvim  # installs GTK/X support for clipboard forwarding
 #dev: brew/libyaml
-dev: pipx/neovim-sh
 dev: cask/pop # screen sharing conference
 #dev: cask/postman
 #dev: pipx/powerline-status
 # TODO: pip3 install git+https://github.com/powerline/powerline
 dev: pipx/pre-commit
 #dev: pipx/pygments
-dev: brew/tmux pacman/tmux
 #dev: brew/tmux-xpanes yay/tmux-xpanes
 #dev: pipx/tmuxp
-dev: brew/universal-ctags # generates tags from codebase
 #dev: cask/vimr
 #dev: brew/watchman  # lib for watching files
 dev: brew/wireguard-tools
@@ -261,8 +263,9 @@ $(BREW_PREFIX)/Cellar/pandoc-citeproc:
 	curl -L https://bintray.com/homebrew/bottles/download_file?file_path=pandoc-citeproc-0.17.0.1.catalina.bottle.tar.gz \
 		| tar -zxv -C /usr/local/Cellar
 
-brew/zap:
-	curl -s https://raw.githubusercontent.com/zap-zsh/zap/master/install.sh | $(SHELL)
+#brew/zap:
+#	curl -s https://raw.githubusercontent.com/zap-zsh/zap/master/install.sh | $(SHELL)
+
 # brew/sshuttle  # proxy over ssh
 # brew/cipherscan  # scan all cipher suites for https
 # brew/dnsperf  # profile dns server
