@@ -6,7 +6,7 @@ base: brew/neovim pacman/neovim
 base: brew/starship pacman/starship  # shell prompt
 base: brew/tmux pacman/tmux
 base: brew/universal-ctags pacman/ctags # generates tags from codebase
-base: cask/font-hack-nerd-font
+base: cask/font-hack-nerd-font pacman/ttf-hack-nerd
 base: brew/fzf pacman/fzf
 base: pacman/zsh
 #base: # TODO: restore
