@@ -4,14 +4,16 @@ alias ls='lsd'
 alias vim='nvim -c NvimTreeToggle'
 alias cat='bat --paging=never'
 alias gpg-bye='gpg-connect-agent updatestartuptty /bye'
-alias terraform=docker run --rm -it -v /opt/terraform:/terraform hashicorp/terraform
+#alias terraform=docker run --rm -it -v /opt/terraform:/terraform hashicorp/terraform
 #docker run --rm -e AWS_ACCESS_KEY_ID="..." \
 #      -e AWS_SECRET_ACCESS_KEY="..." \
 #      -e AWS_SESSION_TOKEN="..." -e AWS_DEFAULT_REGION=us-east-1 gcaws gcaws list i dba
-#export PIP_REQUIRE_VIRTUALENV=true
+export PIP_REQUIRE_VIRTUALENV=true
 
 # Created by `pipx` on 2022-06-13 16:27:17
-export PATH="$PATH:/Users/mattuyw/.local/bin"
+#export PIPX_DEFAULT_PYTHON="$HOME/.pyenv/versions/3.11.1/bin/python"
+export PATH="$PATH:$HOME/.local/pipx/venvs"
+export PATH="$PATH:$HOME/.local/bin"
 export PATH="/usr/local/bin:$PATH"
 export PATH="/opt/homebrew/bin:$PATH"
 export PATH="/opt/homebrew/sbin:$PATH"
@@ -36,3 +38,7 @@ plug "zsh-users/zsh-completions"
 #source $HOME/.config/zsh/colored-man-pages.zsh
 
 which starship > /dev/null 2>&1 && source <(starship init zsh --print-full-init)
+
+export FZF_DEFAULT_COMMAND="fd . $HOME"
+export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
+export FZF_ALT_C_COMMAND="fd -t d . $HOME"

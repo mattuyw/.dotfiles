@@ -29,17 +29,18 @@ $(PACMAN_PREFIX)/%.yay: $(PACMAN_PREFIX)
 	@# needed flag does not seem to be working now
 	@# https://github.com/Jguer/yay/issues/885
 	# $*
-	su yay -c '\
-		unset GOPATH && \
-		yay -S --noconfirm \
-			$(shell \
-				yay -Qi $* 2>&1 >/dev/null | \
-				grep "error: package" | \
-				grep "was not found" | \
-				cut -d"'" -f2 | \
-				tr "\n" " " \
-			)\
-		'
+	#su yay -c '\
+	unset GOPATH && \
+	yay -S --noconfirm \
+		$(shell \
+			yay -Qi $* 2>&1 >/dev/null | \
+			grep "error: package" | \
+			grep "was not found" | \
+			cut -d"'" -f2 | \
+			tr "\n" " " \
+		)\
+
+	#	'
 	touch $@
 
 $(PACMAN_PREFIX):
@@ -53,6 +54,7 @@ $(PACMAN_MIRRORS): $(PACMAN_PREFIX)/pacman-contrib.pacman
 	cp -f $@ /etc/pacman.d/mirrorlist
 	pacman -Sy
 
+# TODO: this doesn't work because yay was already installed
 $(YAY):
 	useradd --system --create-home --groups wheel yay
 	sed -i 's/^#\s*\(%wheel.*NOPASSWD.*\)/\1/' /etc/sudoers

@@ -39,7 +39,6 @@ pyenv-clean:  ## clean pyenv
 	rm -rf ~/.pyenv
 
 pyenv/%: ## install python version with pyenv
-pyenv/%: fish-clean
 pyenv/%: brew/pyenv pacman/pyenv
 	@# path hack https://stackoverflow.com/questions/69459268/cant-install-python-3-10-0-with-pyenv-on-macos
 	$(eval export PATH=$(subst $(SPACE),:,$(call not-containing,llvm,$(subst :, ,$(PATH)))))
