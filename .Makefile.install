@@ -23,7 +23,12 @@ base: pacman/openssh
 #	sudo systemctl start sshd
 
 #	sudo systemctl enable xrdp
+#	sudo systemctl enable xrdp-sesman
 #	sudo systemctl start xrdp
+#	sudo systemctl start xrdp-sesman
+#	https://gist.github.com/valorad/7fd3e4a7fb4481f1eb77ded42a72537d
+#	yay -Sy --noconfirm xorgxrdp
+#	TODO: `sudo ufw enable` needs to happen on boot
 installers: brew/pipx pacman/python-pipx
 installers: npm/npm
 installers: brew/pyenv pacman/pyenv
@@ -32,10 +37,13 @@ installers: brew/go pacman/go # required for yay
 minimal: brew/btop pacman/btop  # c version of bpytop
 minimal: cask/firefox
 minimal: cask/amethyst
-minimal: yay/xrdp # must be installed by non-root 
+minimal: yay/xrdp yay/xorgxrdp # must be installed by non-root 
 minimal: pacman/ufw
-	# sudo ufw enable
+	#	sudo systemctl enable ufw.service
+	#	sudo systemctl start ufw.service 
 	# sudo ufw allow from 192.168.1.0/24 to any port 3389 proto tcp
+	# sudo ufw allow ssh
+	# need to manually change /etc/xrdp/xrdp.ini port to allow ipv4
 
 entertainment: cask/spotify
 entertainment: cask/signal
