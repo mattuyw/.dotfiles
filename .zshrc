@@ -1,3 +1,7 @@
+if [[ $- =~ i ]] && [[ -z "$TMUX" ]] && [[ -n "$SSH_TTY" ]]; then
+  tmux attach-session -t $USER || tmux new-session -s $USER
+fi
+
 alias ll="ls -lh"
 alias la="ls -la"
 alias ls='lsd'
