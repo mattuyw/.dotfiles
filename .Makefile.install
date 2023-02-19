@@ -53,6 +53,7 @@ tools: brew/jq
 tools: brew/make
 tools: brew/source-highlight pacman/source-highlight # used by less with default highlight
 tools: brew/thefuck pacman/thefuck
+tools: brew/git-lfs
 #tools: pipx/httpie
 #tools: pacman/xclip
 

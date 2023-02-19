@@ -36,3 +36,7 @@
 	defaultBranch = main
 [core]
 	excludesfile = $HOME/.gitignore_global
+	compression = 0
+[http]
+	postBuffer = 500M
+	maxRequestBuffer = 100M

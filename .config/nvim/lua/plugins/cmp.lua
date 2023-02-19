@@ -16,6 +16,7 @@ return function(use)
             "ray-x/cmp-treesitter",
 			"hrsh7th/cmp-cmdline",
 			"hrsh7th/cmp-nvim-lsp-document-symbol",
+			"zbirenbaum/copilot-cmp",
         },
         config = function()
             local cmp = require("cmp")

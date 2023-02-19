@@ -70,7 +70,7 @@ require("plugins.treesitter")(use)
     -- require("plugins.focus")(use)
 
     require("plugins.vscode")(use) -- theme, must run "colorscheme vscode"
-	require("plugins.copilot")(use)
+	--require("plugins.copilot")(use)
     -- Automatically set up your configuration after cloning packer.nvim
     -- Put this at the end after all plugins
     if PackerBootstrap then
