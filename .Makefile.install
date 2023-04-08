@@ -34,6 +34,7 @@ installers: npm/npm
 installers: brew/pyenv pacman/pyenv
 installers: brew/go pacman/go # required for yay
 
+minimal: cask/iina
 minimal: brew/btop pacman/btop  # c version of bpytop
 minimal: cask/firefox
 minimal: cask/amethyst
@@ -65,6 +66,7 @@ casks: cask/bartender
 casks: cask/slack
 casks: cask/notion
 casks: cask/1password/tap/1password-cli
+casks: cask/obs
 #casks: cask/monodraw # ascii drawing
 
 dev: cask/docker pacman/docker
@@ -76,6 +78,7 @@ dev: pipx/pre-commit # TODO: run as local user
 #dev: brew/tmux-xpanes yay/tmux-xpanes
 
 devcloud: pipx/awscliv2
+devcloud: cask/session-manager-plugin
 
 devpy: npm/pyright
 devpy: pipx/black # reformat
@@ -113,3 +116,5 @@ eden: brew/tree # eden
 eden: brew/unzip # eden
 eden: brew/watch # eden
 eden: brew/grep
+
+htb: cask/burp-suite

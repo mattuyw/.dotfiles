@@ -5,4 +5,3 @@ elif [ -n "$BASH_VERSION" ]; then
 fi
 
 [ -f ~/.fzf.$shell ] && source ~/.fzf.$shell 2> /dev/null
-. "$HOME/.cargo/env"

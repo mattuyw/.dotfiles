@@ -17,9 +17,7 @@ return function(use)
         },
         config = function()
             require("nvim-tree").setup({
-				open_on_setup = true,
-				open_on_setup_file = true,
-	  			ignore_buffer_on_setup = true,
+				-- https://github.com/nvim-tree/nvim-tree.lua/wiki/Open-At-Startup#open_on_setup
                 sync_root_with_cwd = false,
 				tab = {
 					sync = {

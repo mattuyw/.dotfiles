@@ -155,11 +155,11 @@ return function(use)
                 end
             end
 
-            if is_lsp_installed(nvim_lsp.sumneko_lua) then
-                local luadev_options = luadev.setup({})
-                luadev_options.on_attach = lsp_on_attach
-                nvim_lsp.sumneko_lua.setup(luadev_options)
-            end
+            --if is_lsp_installed(nvim_lsp.lua_ls) then
+            --    local luadev_options = luadev.setup({})
+            --    luadev_options.on_attach = lsp_on_attach
+            --    nvim_lsp.lua_ls.setup(luadev_options)
+            --end
 
             local helpers = require("null-ls.helpers")
 
