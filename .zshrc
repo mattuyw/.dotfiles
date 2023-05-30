@@ -38,3 +38,9 @@ which starship > /dev/null 2>&1 && source <(starship init zsh --print-full-init)
 export FZF_DEFAULT_COMMAND="fd . $HOME"
 export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
 export FZF_ALT_C_COMMAND="fd -t d . $HOME"
+
+ssm(){
+  aws ssm start-session --target $(aws ec2 describe-instances --filters "Name=tag:Name,Values=$1" "Name=instance-state-name,Values=running" --query "Reservations[*].Instances[*].[InstanceId]" --output text) --reason $(whoami) --document-name "Boxes" --parameters "username=$(whoami)"
+}
+
+export AWS_PROFILE=classic

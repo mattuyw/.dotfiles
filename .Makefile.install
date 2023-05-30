@@ -79,6 +79,7 @@ dev: pipx/pre-commit # TODO: run as local user
 
 devcloud: pipx/awscliv2
 devcloud: cask/session-manager-plugin
+devcloud: brew/terraform
 
 devpy: npm/pyright
 devpy: pipx/black # reformat

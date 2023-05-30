@@ -19,3 +19,5 @@
 [core]
 	excludesfile = $HOME/.gitignore_global
 	compression = 0
+[submodule]
+	recurse = true
