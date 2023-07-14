@@ -19,5 +19,6 @@
 [core]
 	excludesfile = $HOME/.gitignore_global
 	compression = 0
+	editor = vim
 [submodule]
 	recurse = true
