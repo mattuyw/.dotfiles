@@ -12,14 +12,15 @@ export RIPGREP_CONFIG_PATH="$HOME/.config/ripgrep/.ripgreprc"
 export TMUX_PLUGIN_MANAGER_PATH="$HOME/.tmux/plugins/"
 
 # plugin manager
-[ -f "$HOME/.local/share/zap/zap.zsh" ] && source "$HOME/.local/share/zap/zap.zsh"
-
-plug "zsh-users/zsh-autosuggestions"
-plug "zsh-users/zsh-syntax-highlighting"
-plug "zsh-users/zsh-completions"
+if [ -f "$HOME/.local/share/zap/zap.zsh" ]; then
+  source "$HOME/.local/share/zap/zap.zsh"
+  plug "zsh-users/zsh-autosuggestions"
+  plug "zsh-users/zsh-syntax-highlighting"
+  plug "zsh-users/zsh-completions"
+fi
 
 # Generated for envman. Do not edit.
-[ -s "$HOME/.config/envman/load.sh" ] && source "$HOME/.config/envman/load.sh"
+# [ -s "$HOME/.config/envman/load.sh" ] && source "$HOME/.config/envman/load.sh"
 [ -f /Users/mattuyw/.config/.gc ] && source /Users/mattuyw/.config/.gc 2> /dev/null
 
 export SSH_AUTH_SOCK=$(gpgconf --list-dirs agent-ssh-socket)
