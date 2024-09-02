@@ -6,9 +6,6 @@ shell:
     - "tmux attach-session -t $USER || tmux new-session -s $USER"
 
 window:
-  dimensions:
-    columns: 0
-    lines: 0
   padding:
     x: 5
     y: 5
@@ -18,17 +15,8 @@ window:
 scrolling:
   history: 100000
 
-mouse:
-  hide_when_typing: false
-  hints:
-    # Default:
-    #   - (macOS) open
-    #   - (Linux/BSD) xdg-open
-    #   - (Windows) explorer
-    launcher:
-      program: open
-      args: []
-    modifiers: Command
+# mouse:
+#   hide_when_typing: false
 
 font:
   # Normal (roman) font face

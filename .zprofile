@@ -1,10 +1,8 @@
 # . "$HOME/.cargo/env"
 # . "/Users/mattuyw/.local/env"
-
-export STARSHIP_CONFIG="$HOME/.config/starship.toml"
-
 export PIP_REQUIRE_VIRTUALENV=true
 
+export PATH="$PATH:$HOME/bin" # tfswitch
 # export PATH="$PATH:$HOME/.pipx/bin"
 # export PATH="/usr/local/bin:$PATH"
 # export PATH="/opt/homebrew/bin:/opt/homebrew/sbin${PATH+:$PATH}";
