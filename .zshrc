@@ -39,9 +39,12 @@ export KEYTIMEOUT=1
 # [ -s "$HOME/.config/envman/load.sh" ] && source "$HOME/.config/envman/load.sh"
 [ -f /Users/mattuyw/.config/.gc ] && source /Users/mattuyw/.config/.gc 2> /dev/null
 
-export SSH_AUTH_SOCK=$(gpgconf --list-dirs agent-ssh-socket)
-gpgconf --launch gpg-agent
-gpg-bye > /dev/null 2>&1
+# NOTE: this works best not on macOS
+#
+# export SSH_AUTH_SOCK=$(gpgconf --list-dirs agent-ssh-socket)
+export GPG_TTY=$(tty)
+# gpgconf --launch gpg-agent
+# gpg-bye > /dev/null 2>&1
 
 export NVM_DIR=~/.nvm
 source $(brew --prefix nvm)/nvm.sh
